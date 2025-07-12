@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">CBM Calculator</string>
     <string name="stand_by_example_switch">Switch_Stand_By_+Example</string>
-    <string name="stand_by_example_expression_text">Text_Stand_By_+Example</string>    
+    <string name="stand_by_example_expression_text">Text_Stand_By_+Example</string>
     <string name="decimal_always_switch">Switch_Numbers_+Decimal_Always</string>
     <string name="stand_by_example_default_expression_texttcn">TextTCN_Stand_By_+Example_Default_Expression</string>
     <string name="stand_by_example_default_expression_text">Text_Example_Default_Expression</string>
@@ -29,7 +29,7 @@
     <string name="symbols_textc">Textc_Symbols</string>
     <string name="default_theme_color">Color_Default_Theme</string-->
     <string name="answer_for">AnswerFor</string>
-    
+
     <string-array name="app_settings">
         <item>@string/stand_by_example_switch</item>
         <item>@string/stand_by_example_expression_text</item>
@@ -59,7 +59,7 @@
         <item>@string/symbols_textc</item>
         <item>@string/default_theme_color</item-->
     </string-array>
-    
+
     <string name="alt_answer">Alternative Answer</string>
     <string name="MADS">×,+,÷,-</string>
 

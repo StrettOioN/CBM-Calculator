@@ -2,11 +2,9 @@ package com.cbm.android.cbmcalculator.extended;
 
 import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.os.AsyncTask;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -14,7 +12,6 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.cbm.android.cbmcalculator.ASelf;
-import com.cbm.android.cbmcalculator.MainActivity;
 import com.cbm.android.cbmcalculator.utility.Ut;
 
 import java.util.ArrayList;
