@@ -3,69 +3,48 @@ package com.cbm.android.cbmcalculatorandroid
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.ImageButton
+import android.view.WindowManager
+import android.widget.Toast
+import androidx.lifecycle.ViewModelProvider
+import com.cbm.android.cbmcalculatorandroid.data.model.It
 import com.cbm.android.cbmcalculatorandroid.databinding.LayoutMainBinding
-import java.math.BigDecimal
+import com.cbm.android.cbmcalculatorandroid.tool.Tools
 
 class MainActivity : AppCompatActivity() {
-
+    val TAG = MainActivity::class.java.simpleName
     lateinit var binding:LayoutMainBinding
+    lateinit var itvm:It
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = LayoutMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        itvm = ViewModelProvider(this).get(It::class.java)
+        window.addFlags(WindowManager.LayoutParams.FLAG_NOT_FOCUSABLE)
+//        binding.Expression.setOnClickListener {
+//            Toast.makeText(it!!.context, "Current Number: "+itvm.getNumber(binding.Expression), Toast.LENGTH_SHORT).show()
+//        }
     }
 
     public fun onBtnClick(v:View) {
-        if(v is Button) {
-            val btn = v as Button
-            val text = btn.text.toString()
-            var append = false
-            if(Tools.isNumber(text)) {
-                append = true
-            } else if(Tools.expression().contains(text)) {
-                append = true
-            } else if(text.equals("=")) {
-                binding.tvDisplay.text = evaluation(binding.tvExpression.text.toString())
-            }
-            if(append){binding.tvExpression.append(text)}
-
-        } else if(v is ImageButton) {
-
+        if(itvm.standBy) {
+            clear()
+            itvm.standBy=false
         }
+        itvm.onPadClick(v, binding.Expression)
     }
 
-    public fun calculate(sym:String, val1:BigDecimal, val2:BigDecimal):BigDecimal {
-        var ans = BigDecimal(0)
-        when(sym) {
-            "+" -> ans = val1.add(val2);
-            "-" -> ans = val1.minus(val2);
-            "*", "+" -> ans = val1.multiply(val2);
-            "/", "÷" -> ans = val1.divide(val2, BigDecimal.ROUND_UNNECESSARY);
-        }
-        return ans
+    private fun clear() {
+        binding.tvDisplay.text = ""
+        binding.Expression.setText("")
     }
 
-    public fun evaluation(expression:String):String {
-        var ans = BigDecimal(0);
-        var sym = "+";
-        var number="";
-
-        expression.forEachIndexed { index, c ->
-            if(Tools.isNumber(c+"")) {
-                number+=c+""
-                if(index>=expression.length-1)
-                {ans = calculate(sym, ans, number.toBigDecimal())}
-            } else {
-                ans = calculate(sym, ans, number.toBigDecimal())
-                sym = c+""
-                number=""
-            }
-        }
-
-        return ans.toString()
+    public fun onClear(v:View) {
+        clear()
+    }
+    public fun onEqual(v:View) {
+        itvm.display(binding.tvDisplay, Tools.evaluation(binding.Expression.text.toString()))
+        itvm.standBy=true
     }
 }
