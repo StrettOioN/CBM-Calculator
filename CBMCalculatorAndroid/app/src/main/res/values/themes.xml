@@ -3,7 +3,16 @@
     <style name="Base.Theme.CBMCalculatorAndroid" parent="Theme.Material3.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="android:button">@style/CalcButton</item>
+        <item name="buttonStyle">@style/CalcButton</item>
+        <item name="android:buttonStyle">@style/CalcButton</item>
     </style>
 
     <style name="Theme.CBMCalculatorAndroid" parent="Base.Theme.CBMCalculatorAndroid" />
+
+    <style name="CalcButton" parent="MaterialAlertDialog.Material3">
+        <item name="android:background">#F888</item>
+        <item name="android:layout_margin">2dp</item>
+        <item name="android:textColor">@color/black</item>
+    </style>
 </resources>
