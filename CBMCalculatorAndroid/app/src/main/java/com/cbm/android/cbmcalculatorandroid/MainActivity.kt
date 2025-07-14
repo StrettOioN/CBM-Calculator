@@ -38,13 +38,26 @@ class MainActivity : AppCompatActivity() {
     private fun clear() {
         binding.tvDisplay.text = ""
         binding.Expression.setText("")
+
+        itvm.standBy=true
     }
 
     public fun onClear(v:View) {
         clear()
     }
     public fun onEqual(v:View) {
-        itvm.display(binding.tvDisplay, Tools.evaluation(binding.Expression.text.toString()))
-        itvm.standBy=true
+        var expression = binding.Expression.text.toString()
+        if(expression.length>0) {
+            if (!Tools.isNumber(expression[expression.length - 1] + "")) {
+                val lastChar = expression[expression.length - 1]
+                expression +=if(lastChar.equals("+")||lastChar.equals("-"))
+                { "0" }
+                else { "1" }
+            }
+            itvm.display(binding.tvDisplay, Tools.evaluation(binding.Expression.text.toString()))
+            itvm.standBy = true
+        }
     }
+
+
 }

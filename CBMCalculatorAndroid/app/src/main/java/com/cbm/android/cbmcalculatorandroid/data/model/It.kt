@@ -23,32 +23,53 @@ class It: ViewModel() {
             val btn = v as Button
             val text = btn.text.toString()
             var append = false
-            if (Tools.isNumber(text)) {
+            if (Tools.isNumber(text)||text.equals(".")){
                 append = true
             } else if (Tools.symbols().contains(text)) {
                 append = true
             }
             if (append) {
                 try {
-                    var ss = (eV as EditText).selectionStart
-//                    var se = (eV as EditText).selectionEnd
-                    if(ss>=(eV).length()){ss=(eV).length()}
-                    if(ss<0){ss=0}
-                    if (Tools.symbols().contains(text)) {
-                        (eV).text.insert(ss, appendSymbol(eV, text))
-                    } else {
-                        if(getNumber(eV).contains(".")){return}
-                        (eV).text.insert(ss, text)
-                    }
-                    (eV).setSelection(ss + 1)
+                    appendTo(eV, text)
                 } catch (ex: Exception) {
                     ex.printStackTrace()
                 }
             }
-
         } else if (v is ImageButton) {
-
+            backspace(eV)
         }
+    }
+
+    private fun backspace(eV: View) {
+        var ss = (eV as EditText).selectionStart
+        if (ss - 1 < 0) {
+            ""
+        } else eV.text.delete(ss - 1, ss)
+    }
+
+    private fun appendTo(eV: View, text: String) {
+        var ss = (eV as EditText).selectionStart
+        //                    var se = (eV as EditText).selectionEnd
+        if (ss >= (eV).length()) {
+            ss = (eV).length()
+        }
+        if (ss < 0) {
+            ss = 0
+        }
+        if (Tools.symbols().contains(text)) {
+            (eV).text.insert(ss, appendSymbol(eV, text))
+        } else {
+            if (text.equals(".")) {
+                if(getNumber(eV).contains(".")) {
+                return}
+            } else {
+//                var prevChar =if(ss-1<0){""}else {eV.text[ss]+""}
+                if(getNumber(eV).equals("0"))backspace(eV)
+                ss = eV.selectionStart
+            }
+            (eV).text.insert(ss, text)
+        }
+        (eV).setSelection(ss + 1)
     }
 
     fun appendSymbol(v:View, txt:String):String {

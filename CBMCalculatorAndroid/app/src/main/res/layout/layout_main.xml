@@ -104,7 +104,7 @@
 
             <Button  android:onClick="onBtnClick" android:id="@+id/btndot" android:text="." android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
             <Button  android:onClick="onBtnClick" android:id="@+id/btn0" android:text="0" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <ImageButton android:id="@+id/btnbackspace" android:src="@drawable/backspace" android:scaleType="fitCenter" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+            <ImageButton android:onClick="onBtnClick" android:id="@+id/btnbackspace" android:src="@drawable/backspace" android:scaleType="fitCenter" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
             <Button  android:onClick="onEqual" android:id="@+id/btnequal" android:text="=" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
         </LinearLayout>
 
