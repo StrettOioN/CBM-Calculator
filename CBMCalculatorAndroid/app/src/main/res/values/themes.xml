@@ -15,4 +15,13 @@
         <item name="android:layout_margin">2dp</item>
         <item name="android:textColor">@color/black</item>
     </style>
+
+    <style name="Theme.CBMCalculatorAndroid.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+    <style name="Theme.CBMCalculatorAndroid.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="Theme.CBMCalculatorAndroid.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 </resources>

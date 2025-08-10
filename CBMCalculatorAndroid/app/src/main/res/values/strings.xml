@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">CBMCalculatorAndroid</string>
+    <string name="title_activity_tab">TabActivity</string>
+    <string name="tab_text_1">Tab 1</string>
+    <string name="tab_text_2">Tab 2</string>
+    <string name="back"><![CDATA[<]]></string>
+    <string name="forward"><![CDATA[>]]></string>
+    <string name="backspace"><![CDATA[<]]>-</string>
 </resources>

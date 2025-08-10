@@ -1,112 +1,319 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FEEE"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".ui.MainActivity">
 
     <!-- Display for input and result -->
     <TextView
         android:id="@+id/tvDisplay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="0"
-        android:textSize="32sp"
-        android:textColor="@color/white"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:freezesText="true"
+        android:background="@drawable/bgs_black_acc"
         android:gravity="end"
         android:padding="16dp"
-        android:background="#FF303030"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        />
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:orientation="vertical"
-        >
+        android:text="0"
+        android:textColor="@color/white"
+        android:textSize="32sp"/>
 
-    </LinearLayout>
     <EditText
         android:id="@+id/Expression"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="32sp"
+        android:layout_above="@id/btngrid"
+        android:layout_below="@id/tvDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:freezesText="true"
+        android:background="#FEEE"
         android:gravity="end|bottom"
         android:padding="16dp"
-        android:background="#FEEE"/>
+        android:text=""
+        android:textSize="32sp"
+        />
+    <LinearLayout
+        android:id="@+id/llExpressions"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/btngrid"
+        android:layout_below="@id/tvDisplay"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:orientation="vertical"
+        android:padding="2dp"
+        android:gravity="bottom|right"
+        android:visibility="gone">
+<!--    tag of view must always be an expression(='5', ='2+3') or math symbol(='+', '=sqrroot=2 sqrroot #')    -->
+
+    </LinearLayout>
 
     <!-- Number and operation buttons -->
     <LinearLayout
         android:id="@+id/btngrid"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
         android:orientation="vertical"
-        android:padding="16dp">
+        android:padding="2dp">
 
         <!-- Final row: C 0 = ÷ -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
-            <Button  android:onClick="onClear" android:id="@+id/btnc" android:text="C" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btnh" android:text="H" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btntools" android:text="Tool" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btnDivide" android:text="÷" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onClear"
+                android:text="C" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnH"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="H" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnTools"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="T" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnDivide"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="#F999"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="÷"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <!-- Top row: 7 8 9 + -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn7" android:text="7" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn8" android:text="8" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn9" android:text="9" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btnMultiply" android:text="×" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="7" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="8" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="9" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnMultiply"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="#F999"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="×"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <!-- Middle row: 4 5 6 - -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button android:onClick="onBtnClick" android:id="@+id/btn4" android:text="4" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button android:onClick="onBtnClick" android:id="@+id/btn5" android:text="5" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button android:onClick="onBtnClick" android:id="@+id/btn6" android:text="6" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btnMinus" android:text="-" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="4" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="5" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="6" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnMinus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="#F999"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="-"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <!-- Bottom row: 1 2 3 × -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn1" android:text="1" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn2" android:text="2" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn3" android:text="3" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btnPlus" android:text="+" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="1" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="2" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="3" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnPlus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="#F999"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="+"
+                android:textColor="@color/white" />
         </LinearLayout>
 
         <!-- Final row: C 0 = ÷ -->
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/button_height"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <Button  android:onClick="onBtnClick" android:id="@+id/btndot" android:text="." android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onBtnClick" android:id="@+id/btn0" android:text="0" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <ImageButton android:onClick="onBtnClick" android:id="@+id/btnbackspace" android:src="@drawable/backspace" android:scaleType="fitCenter" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
-            <Button  android:onClick="onEqual" android:id="@+id/btnequal" android:text="=" android:layout_weight="1" android:layout_width="0dp" android:layout_height="@dimen/button_height" style="@style/CalcButton" />
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btndot"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="." />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btn0"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:onClick="onBtnClick"
+                android:text="0" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnbackspace"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="@string/backspace" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnequal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accent"
+                android:backgroundTintMode="multiply"
+                android:onClick="onEqual"
+                android:text="="
+                android:textColor="@color/white" />
         </LinearLayout>
 
     </LinearLayout>
-</LinearLayout>
+
+    <com.cbm.android.cbmcalculatorandroid.ui.custom.ToolPanel
+        android:id="@+id/llTools"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:visibility="gone" />
+</RelativeLayout>
