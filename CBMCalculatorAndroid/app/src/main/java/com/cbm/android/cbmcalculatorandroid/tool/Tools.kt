@@ -33,7 +33,7 @@ class Tools {
             arr.add("π") //PI
             arr.add("φ") //Golden Ratio: (1+√5)÷2=1.6180339887
             //expression symbol collection
-            arr.add("±")
+//            arr.add("±")
             arr.add("√")
             arr.add("(");
             arr.add(")");
@@ -114,7 +114,8 @@ class Tools {
 
                         if(bracketExpression.startsWith("(")
                             &&bracketExpression.endsWith(")")
-                            &&isNumber(bracketExpression.substring(1, bracketExpression.length-1))){number=bracketExpression;}
+                            &&isNumber(bracketExpression.substring(1, bracketExpression.length-2)))
+                        {number=bracketExpression;}
                         else{number = evaluateBracket(bracketExpression)}
 //                        ans = calculate(sym, ans, number.toBigDecimal())
                     } else {bracketExpression+=c+"";}

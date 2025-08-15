@@ -84,17 +84,6 @@
                 android:text="C" />
 
             <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
-                android:id="@+id/btnH"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:layout_margin="2dp"
-                android:backgroundTint="@color/accentLight"
-                android:backgroundTintMode="multiply"
-                android:onClick="onBtnClick"
-                android:text="H" />
-
-            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
                 android:id="@+id/btnTools"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -104,6 +93,17 @@
                 android:backgroundTintMode="multiply"
                 android:onClick="onBtnClick"
                 android:text="T" />
+
+            <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
+                android:id="@+id/btnInverse"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_margin="2dp"
+                android:backgroundTint="@color/accentLight"
+                android:backgroundTintMode="multiply"
+                android:onClick="onBtnClick"
+                android:text="±" />
 
             <com.cbm.android.cbmcalculatorandroid.ui.custom.CButton
                 android:id="@+id/btnDivide"
