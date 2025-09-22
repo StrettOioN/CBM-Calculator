@@ -5,4 +5,7 @@
     <color name="colorAccentT">#FF000080</color>
     <color name="colorAccentA">#CC0000FF</color>
     <color name="colorAccentAT">#CC000080</color>
+    <color name="black">#000</color>
+    <color name="white">#FFF</color>
+<!--    <color name=""></color>-->
 </resources>
