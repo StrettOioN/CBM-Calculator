@@ -3,8 +3,8 @@ package com.cbm.android.cbmcalculator.calcation;
 import java.util.List;
 
 public class ExpressionCompiler {
-    public static double compile(String expression, boolean bodmas) {
-        List<Token> tokens = Tokenizer.tokenize(expression);
+    public static double compile(Entry expression, boolean bodmas) {
+        List<Token> tokens = Tokenizer.tokenize(expression.getExpression());
         List<Token> rpn = ToGether.toRPN(tokens, bodmas);
         ExprNode root = ASTBuilder.build(rpn);
         return root.evaluate();

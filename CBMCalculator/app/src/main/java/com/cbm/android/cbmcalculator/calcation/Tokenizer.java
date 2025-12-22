@@ -10,25 +10,29 @@ public class Tokenizer {
     public static final Set<String> SYMBOLS = Set.of("π", "φ", "√", "∑", "∏", "∞", "≠", "≈", "≤", "≥", "!", "e^n");
 
     public static List<Token> tokenize(String expr) {
+        return null;
+    }
+
+    public static List<Token> tokenize(ArrayList<String> expr) {
         List<Token> tokens = new ArrayList<>();
         StringBuilder buffer = new StringBuilder();
         try {
 
-            for (char c : expr.toCharArray()) {
-                if (Character.isWhitespace(c)) continue;
-                if (!Tools.isNumber(c + "")) {
+            for (String elem : expr) {
+                if (elem.isEmpty()) continue;
+                if (!Tools.isNumber(elem + "")) {
                     buffer.setLength(0);
                 }
-                buffer.append(c);
+                buffer.append(elem);
                 String current = buffer.toString();
 
                 if (SYMBOLS.contains(current)) {
                     tokens.add(new Token(Token.Type.SYMBOL, current));
                     buffer.setLength(0);
-                } else if ("()+-*/÷×^".indexOf(c) >= 0) {
-                    tokens.add(new Token(Token.Type.OPERATOR, String.valueOf(c)));
+                } else if ("()+-*/÷×^".indexOf(elem) >= 0) {
+                    tokens.add(new Token(Token.Type.OPERATOR, String.valueOf(elem)));
                     buffer.setLength(0);
-                } else if (Character.isDigit(c) || c == '.') {
+                } else if (Tools.isNumber(elem)) {
                     // Continue building number
 
                     if ((buffer.length() > 0 && tokens.size()==0) || (tokens.size() > 0 && !Tools.isNumber(tokens.get(tokens.size() - 1).value))) {
@@ -36,7 +40,7 @@ public class Tokenizer {
                     } else tokens.set(tokens.size() - 1, new Token(Token.Type.NUMBER, String.valueOf(buffer)));
                 } else {
                     // Handle variables or functions
-                    tokens.add(new Token(Token.Type.FUNCTION, String.valueOf(c)));
+                    tokens.add(new Token(Token.Type.FUNCTION, String.valueOf(elem)));
                 }
             }
 
