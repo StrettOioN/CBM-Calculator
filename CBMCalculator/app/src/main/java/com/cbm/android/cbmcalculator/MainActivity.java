@@ -21,6 +21,7 @@ import com.cbm.android.cbmcalculator.settings.AppSettings;
 import org.json.JSONObject;
 
 import java.math.BigDecimal;
+import java.util.regex.Pattern;
 
 import ui.cbmtext.CBMButton;
 import ui.cbmtext.CBMText;
@@ -219,7 +220,10 @@ public class MainActivity extends AppCompatActivity {
         }
 
         String ans = ExpressionCompiler.compile(entry, sets.getBODMAS())+"";
-//        Log.d("MainAct", "Answer="+ans);
+        String regex = "\\d+\\.(0)+$";
+        if(Pattern.compile(regex).matcher(ans).matches()) {
+            ans = new BigDecimal(ans).toBigInteger()+"";
+        }
         return ans;
     }
 
