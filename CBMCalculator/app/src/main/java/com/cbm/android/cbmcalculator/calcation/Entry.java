@@ -133,6 +133,7 @@ public class Entry {
             deselectAll(expressionUI.get());
             cbmButton.setSelected(!cbmButton.isSelected());
             cbmButton.setFillColor(view.getContext().getColor(R.color.colorAccent));
+            cbmButton.setSelectedColor(view.getContext().getColor(R.color.colorAccentA));
             cbmButton.setTextColor(Color.WHITE);
             cbmt.getEditText().requestFocus();
             cbmt.getEditText().selectAll();

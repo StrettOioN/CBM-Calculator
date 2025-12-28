@@ -2,7 +2,12 @@
     
     <!-- Base application theme. -->
     <style name="AppTheme" parent="@style/Theme.AppCompat.Light.NoActionBar">
-        
+
     </style>
-    
+    <style name="CBMBtnStyle">
+        <item name="fillColor">@color/black</item>
+        <item name="disabled_color">#777</item>
+        <item name="selected_color">@color/colorAccent</item>
+        <item name="pressed_color">@color/colorAccentA</item>
+    </style>
 </resources>

@@ -92,21 +92,20 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             app:radius="@dimen/dim16dp"
-            app:text="C" />
+            app:text="C"
+            style="@style/CBMBtnStyle"/>
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
+            android:enabled="false"
             app:radius="@dimen/dim16dp"
             android:textSize="10sp"
-            app:text="Tools" />
+            app:text="Tools"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:id="@+id/btnBODMAS"
@@ -114,25 +113,22 @@
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
             app:strokeWidth="4dp"
-            app:pressed_color="@color/colorAccentA"
-            app:selected_color="@color/colorAccent"
             app:radius="@dimen/dim16dp"
             app:editable="false"
             app:gravity="center"
             app:text="÷×+-"
-            android:textSize="10sp"/>
+            android:textSize="10sp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="÷"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
@@ -143,37 +139,35 @@
             app:radius="@dimen/dim16dp"
             app:selected_color="#333"
             app:textColor="@color/white"
-            app:text="7" />
+            app:text="7"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             app:radius="@dimen/dim16dp"
-            app:text="8" />
+            app:text="8"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="9"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="×"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
@@ -183,57 +177,53 @@
             app:fillColor="@color/black"
             app:radius="@dimen/dim16dp"
             app:selected_color="#333"
-            app:text="4" />
+            app:text="4"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             app:radius="@dimen/dim16dp"
-            app:text="5" />
+            app:text="5"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="6"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="-"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="1"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             app:radius="@dimen/dim16dp"
-            app:text="2" />
+            app:text="2"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
@@ -243,17 +233,17 @@
             app:fillColor="@color/black"
             app:radius="@dimen/dim16dp"
             app:selected_color="#333"
-            app:text="3" />
+            app:text="3"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="+"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
@@ -263,37 +253,35 @@
             app:fillColor="@color/black"
             app:radius="@dimen/dim16dp"
             app:selected_color="#333"
-            app:text="." />
+            app:text="."
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:textColor="#FFF"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             app:radius="@dimen/dim16dp"
-            app:text="0" />
+            app:text="0"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="-+"
-            app:fillColor="@color/black"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
 
         <ui.cbmtext.CBMButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             app:text="="
-            app:fillColor="@color/colorAccent"
-            app:pressed_color="@color/colorAccentA"
             android:textColor="#FFF"
-            app:radius ="@dimen/dim16dp" />
+            app:radius ="@dimen/dim16dp"
+            style="@style/CBMBtnStyle" />
     </ui.shapelayout.ShapeLayout>
 
     <LinearLayout
