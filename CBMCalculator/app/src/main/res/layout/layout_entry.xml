@@ -13,7 +13,7 @@
     app:fillColor="@color/white"
     app:strokeColor="@color/black"
     app:strokeWidth="4dp"
-    app:radius="@dimen/dim16dp"
+    app:radius="@dimen/d16dp"
     android:textSize="22sp"
     app:selected_color="#333"
     tools:text="1" />

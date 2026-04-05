@@ -1,4 +1,8 @@
-package com.cbm.android.cbmcalculator;
+package com.cbm.android.cbmcalculator.ui;
+
+
+import static android.view.View.VISIBLE;
+import static android.view.View.GONE;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -6,26 +10,31 @@ import android.text.TextWatcher;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.EditText;
+import android.widget.GridLayout;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.cbm.android.cbmcalculator.R;
 import com.cbm.android.cbmcalculator.calcation.Entry;
+import com.cbm.android.cbmcalculator.calcation.SymbolNode;
+import com.cbm.android.cbmcalculator.databinding.LayoutToolObjectBinding;
+import com.cbm.android.cbmcalculator.databinding.LayoutToolPanelBinding;
 import com.cbm.android.cbmcalculator.tool.AutoDeleteHandler;
 import com.cbm.android.cbmcalculator.tool.Tools;
 import com.cbm.android.cbmcalculator.calcation.ExpressionCompiler;
 import com.cbm.android.cbmcalculator.databinding.ActivityMainBinding;
 import com.cbm.android.cbmcalculator.settings.AppSettings;
-
-import org.json.JSONObject;
+import com.cbm.android.cbmcalculator.ui.custom.ToolPanel;
 
 import java.math.BigDecimal;
 import java.util.regex.Pattern;
 
 import ui.cbmtext.CBMButton;
 import ui.cbmtext.CBMText;
-import ui.shapelayout.FlowLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -201,8 +210,91 @@ public class MainActivity extends AppCompatActivity {
             Log.d("Calc", "bodmas="+sets.getBODMAS()+"\nview="+v.isSelected());
         });
 
+        binding.btnTools.setOnClickListener(v -> {
+            showToolPanel();
+        });
+
 //        clear();
     }
+    LayoutToolPanelBinding toolPanel;
+    private void showToolPanel() {
+        if(toolPanel==null) {
+            toolPanel = LayoutToolPanelBinding.inflate(getLayoutInflater());
+            String[] symbols = {"π", "φ", "∞", "e^n"};
+            for(String s: symbols) {
+                TextView tv = LayoutToolObjectBinding.inflate(getLayoutInflater()).getRoot();
+                tv.setText(s);
+                GridLayout.LayoutParams lp = new GridLayout.LayoutParams(new ViewGroup.LayoutParams(GridLayout.LayoutParams.WRAP_CONTENT, GridLayout.LayoutParams.WRAP_CONTENT));
+                tv.setLayoutParams(lp);
+                lp.setMargins(getResources().getDimensionPixelOffset(R.dimen.d4dp),
+                        getResources().getDimensionPixelOffset(R.dimen.d4dp),
+                        getResources().getDimensionPixelOffset(R.dimen.d4dp),
+                        getResources().getDimensionPixelOffset(R.dimen.d4dp));
+                tv.setOnClickListener(v-> {
+//                    entry.add(binding.slExpression, entry.makeEditr(s));
+                    binding.stExpressCurrNr.setText(new SymbolNode(s).evaluate()+"");
+                });
+                toolPanel.glTPTools.addView(tv);
+            }
+            toolPanel.tpClose.setOnClickListener(v-> {
+                toolPanel.getRoot().setVisibility(GONE);toolPanel=null;binding.getRoot().requestFocus();
+            });
+            binding.getRoot().addView(toolPanel.getRoot());
+            toolPanel.getRoot().setOnTouchListener(onToolPanelTouch());
+        } else {toolPanel.getRoot().setVisibility(GONE);toolPanel=null;binding.getRoot().requestFocus();}
+    }
+    // Inside your Fragment or Activity
+    private View.OnTouchListener onToolPanelTouch() {
+    /*View.OnTouchListener onToolPanelTouch =*/
+        return new View.OnTouchListener() {
+        float edgeSize = (32 * getResources().getDisplayMetrics().density); // 32dp converted to pixels
+        float dX = 0f;
+        float dY = 0f;
+        boolean isDragging = false;
+        @Override
+        public boolean onTouch(View view, MotionEvent event) {
+            switch (event.getAction()) {
+                case MotionEvent.ACTION_DOWN -> {
+                    // Check if the touch is within the 32dp edge
+                    float x = event.getX();
+                    float y = event.getY();
+                    int width = view.getWidth();
+                    int height = view.getHeight();
+
+                    // True if touch is in the 32dp perimeter
+                    boolean isInEdge = x < edgeSize || x > (width - edgeSize) ||
+                            y < edgeSize || y > (height - edgeSize);
+
+                    if (isInEdge) {
+                        isDragging = true;
+                        dX = view.getX() - event.getRawX();
+                        dY = view.getY() - event.getRawY();
+                        return true; // Consume event to start dragging
+                    } else {
+                        isDragging = false;
+                        return false; // Pass event to children (like buttons inside the GridLayout)
+                    }
+                }
+                case MotionEvent.ACTION_MOVE ->{
+                    if (isDragging) {
+                        view.animate()
+                                .x(event.getRawX() + dX)
+                                .y(event.getRawY() + dY)
+                                .setDuration(0)
+                                .start();
+                        return true;
+                    } else {
+                        return false;
+                    }
+                }
+                case MotionEvent.ACTION_UP ->{
+                    isDragging = false;
+                    return true;
+                }
+                //case default -> return false;
+            } return false;
+        }
+    };}
 
     public void updateItems() {
         for (int i = 0; i < binding.slExpression.getChildCount(); i++) {

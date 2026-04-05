@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+    <ImageButton
+        android:id="@+id/tpClose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignRight="@id/llTPMainPanel"
+        android:layout_margin="@dimen/d8dp"
+        android:src="@drawable/ic_clear"
+        app:tint="@color/white"
+        android:background="#0000"
+
+        />
+    <LinearLayout
+        android:id="@+id/llTPMainPanel"
+        android:orientation="vertical"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="32dp"
+        android:backgroundTint="#E222"
+        android:descendantFocusability="blocksDescendants"
+        android:background="@drawable/bg_black_blue_r">
+        <GridLayout
+            android:id="@+id/glTPTools"
+            android:layout_width="250dp"
+            android:layout_height="300dp"
+            android:enabled="false"
+            android:padding="5dp"
+            android:columnCount="4"
+            android:background="@drawable/bg_white_r"/>
+    </LinearLayout>
+</RelativeLayout>
